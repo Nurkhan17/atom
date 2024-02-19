@@ -1,0 +1,59 @@
+We have input data int *minor(int**A, int size, int i, int j). Find additional minor for this element.
+
+#include <stdio.h>
+#include <stdlib.h>
+
+typedef struct Matrix{
+int cols;
+int rows;
+double ** matrix;
+} Matrix;
+
+double** create_matrix(int n, int m) {
+  double** matrix = NULL;
+  matrix = (double**)calloc(n, sizeof(double*));
+  for(int i = 0; i < n; i++){
+    *(matrix + i) = (double*)calloc(m, sizeof(double));
+  }
+  return matrix;
+}
+
+void print(double** A, int n, int m){
+  for(int i = 0; i < n; i++){
+    for(int j = 0; j < m; j++){
+      printf("%.2lf ", A[i][j]);
+    }
+  puts("");
+  }
+}
+double** additionalminor(){
+  
+}
+
+
+
+int main(void) {
+  int n = 3,m = 5;
+  double** A = NULL;
+  double** B = NULL;
+  double** C = NULL;
+  A = create_matrix(n,m);
+  B = create_matrix(m,n);
+  for(int i = 0; i < n; i++){
+    for(int j = 0; j < m; j++){
+      *(*(A+i)+j) = i+j; 
+  }
+  }
+  for(int i = 0; i < m; i++){
+    for(int j = 0; j < n; j++){
+      *(*(B+i)+j) = i+j; 
+  }
+  }
+  print(A, n, m);
+  puts("");
+  print(B, m, n);
+  puts("");
+  C = additionalminor(A, n, m, B, m, n);
+  print(C, n, n);
+  return 0;
+}

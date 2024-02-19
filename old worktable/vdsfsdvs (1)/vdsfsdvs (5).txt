@@ -1,0 +1,36 @@
+c  float t;
+   {
+    scanf("t");
+    if (t >= 10) {
+      do puts(x); while (t >= 10); }
+    else {
+      do puts(y); while (t <= 10); };
+  }
+
+#include <stdio.h>
+
+int main(void) {
+  char *x = "Yes" ;
+  char *y = "No";
+  int a, b, c;
+  float t;
+   {
+    scanf("t");
+    if (t >= 10) {
+      do puts(x); while (t >= 10); }
+    else {
+      do puts(y); while (t <= 10); };
+  }
+   {
+    scanf("a,b,c");
+    if (a <= 9 && c<= 9 && b <= 9) {
+      while ((a+b>=10) || (b+c>=10) || (a+c>=10));
+      do puts(x); while (a >= 1 && c>= 1 && b>= 1); }
+    else {
+      while ((a+b<=10) || (b+c<=10) || (a+c<=10));
+      do puts(y); while (a >= 1 && c>= 1 && b>= 1); 
+    };
+     return 2;
+
+  }
+}  

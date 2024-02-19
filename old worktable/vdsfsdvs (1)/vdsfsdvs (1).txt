@@ -1,0 +1,23 @@
+#include <stdio.h>
+
+int main(void) {
+  char *x = "Yes" ;
+  char *y = "No";
+  int a, b, c;
+    float t;
+     {
+    scanf("t");
+    if (t >= 10)
+      printf("%d", *x);
+    else if (t <= 10)
+      printf("%d", *y); }
+  {
+    scanf("a,b,c");
+    if ((a+b>=10) || (b+c>=10) || (a+c>=10)) 
+     printf("%d" ,*x);
+    else if ((a+b<=10) || (b+c<=10) || (a+c<=10))
+     printf("%d", *y);
+    }
+return 0;
+
+}

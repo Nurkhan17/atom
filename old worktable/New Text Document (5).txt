@@ -1,0 +1,61 @@
+double laplace_additional_minor(double** A, int n, int m, int i, int j) {
+    if (n != m) {
+        puts("ERROR: Matrix is not square");
+        return 0.0;
+    }
+
+    if (i < 0 || i >= n || j < 0 || j >= m) {
+        puts("ERROR: Invalid matrix indices");
+        return 0.0;
+    }
+
+    // Create a submatrix by excluding the i-th row and j-th column
+    double** submatrix = create_matrix(n - 1, m - 1);
+    int sub_i = 0, sub_j = 0;
+
+    for (int row = 0; row < n; ++row) {
+        if (row == i) {
+            continue;  // Skip the i-th row
+        }
+
+        for (int col = 0; col < m; ++col) {
+            if (col == j) {
+                continue;  // Skip the j-th column
+            }
+
+            submatrix[sub_i][sub_j++] = A[row][col];
+
+            // Move to the next row in the submatrix
+            if (sub_j == m - 1) {
+                sub_j = 0;
+                sub_i++;
+            }
+        }
+    }
+
+    // Calculate the determinant of the submatrix
+    double det_submatrix = determinant(submatrix, n - 1);
+
+    // Calculate the additional minor using the Laplace expansion formula
+    double additional_minor = ((i + j) % 2 == 0 ? 1 : -1) * det_submatrix;
+
+    // Free memory allocated for the submatrix
+    free_matrix(submatrix, n - 1);
+
+    return additional_minor;
+}
+
+// Function to calculate the determinant of a square matrix using Laplace expansion
+double determinant(double** A, int n) {
+    if (n == 1) {
+        return A[0][0];
+    }
+
+    double det = 0.0;
+    for (int j = 0; j < n; ++j) {
+        double cofactor = ((j % 2 == 0) ? 1 : -1) * A[0][j] * laplace_additional_minor(A, n, n, 0, j);
+        det += cofactor;
+    }
+
+    return det;
+}

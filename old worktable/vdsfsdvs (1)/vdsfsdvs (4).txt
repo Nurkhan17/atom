@@ -1,0 +1,21 @@
+#include <stdio.h>
+
+int main(void) {
+  char *x = "Yes" ;
+  char *y = "No";
+  int a, b, c;
+  float t;
+   {
+    scanf("t");
+    if (t >= 10)
+      do puts(x); while (t >= 10);
+    else
+      do puts(y); while (t <= 10); };
+
+    scanf("a,b,c");
+    if ((a+b>=10) || (b+c>=10) || (a+c>=10)) 
+     printf("x");
+    else
+     do puts(y); while ((a+b<=10) || (b+c<=10) || (a+c<=10));
+
+    }
